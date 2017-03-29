@@ -49,7 +49,7 @@ parsedRepos.each {
 	String projectName = "${gitRepoName}-pipeline"
 
 	//  ======= JOBS =======
-	dsl.job("${projectName}-build") {
+	dsl.job("shaozhen/${projectName}-build") {
 		deliveryPipelineConfiguration('Build', 'Build and Upload')
 		triggers {
 			cron(cronValue)
@@ -120,7 +120,7 @@ parsedRepos.each {
 		}
 	}
 
-	dsl.job("${projectName}-test-env-deploy") {
+	dsl.job("shaozhen/${projectName}-test-env-deploy") {
 		deliveryPipelineConfiguration('Test', 'Deploy to test')
 		wrappers {
 			deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -170,7 +170,7 @@ parsedRepos.each {
 		}
 	}
 
-	dsl.job("${projectName}-test-env-test") {
+	dsl.job("shaozhen/${projectName}-test-env-test") {
 		deliveryPipelineConfiguration('Test', 'Tests on test')
 		wrappers {
 			deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -234,7 +234,7 @@ parsedRepos.each {
 	}
 
 	if (rollbackStep) {
-		dsl.job("${projectName}-test-env-rollback-deploy") {
+		dsl.job("shaozhen/${projectName}-test-env-rollback-deploy") {
 			deliveryPipelineConfiguration('Test', 'Deploy to test latest prod version')
 			wrappers {
 				deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -284,7 +284,7 @@ parsedRepos.each {
 			}
 		}
 
-		dsl.job("${projectName}-test-env-rollback-test") {
+		dsl.job("shaozhen/${projectName}-test-env-rollback-test") {
 			deliveryPipelineConfiguration('Test', 'Tests on test latest prod version')
 			wrappers {
 				deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -369,7 +369,7 @@ parsedRepos.each {
 	}
 
 	if (stageStep) {
-		dsl.job("${projectName}-stage-env-deploy") {
+		dsl.job("shaozhen/${projectName}-stage-env-deploy") {
 			deliveryPipelineConfiguration('Stage', 'Deploy to stage')
 			wrappers {
 				deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -429,7 +429,7 @@ parsedRepos.each {
 			}
 		}
 
-		dsl.job("${projectName}-stage-env-test") {
+		dsl.job("shaozhen/${projectName}-stage-env-test") {
 			deliveryPipelineConfiguration('Stage', 'End to end tests on stage')
 			wrappers {
 				deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -489,7 +489,7 @@ parsedRepos.each {
 		}
 	}
 
-	dsl.job("${projectName}-prod-env-deploy") {
+	dsl.job("shaozhen/${projectName}-prod-env-deploy") {
 		deliveryPipelineConfiguration('Prod', 'Deploy to prod')
 		wrappers {
 			deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)
@@ -552,7 +552,7 @@ parsedRepos.each {
 		}
 	}
 
-	dsl.job("${projectName}-prod-env-complete") {
+	dsl.job("shaozhen/${projectName}-prod-env-complete") {
 		deliveryPipelineConfiguration('Prod', 'Complete switch over')
 		wrappers {
 			deliveryPipelineVersion('${ENV,var="PIPELINE_VERSION"}', true)

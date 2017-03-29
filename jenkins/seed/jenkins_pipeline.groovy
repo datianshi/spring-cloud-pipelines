@@ -46,7 +46,6 @@ factory.job('jenkins-pipeline-seed') {
     steps {
         gradle("clean build")
         dsl {
-            external('jenkins/jobs/jenkins_pipeline_sample*.groovy')
             external('jenkins/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
             removeAction('DISABLE')
             removeViewAction('DELETE')
