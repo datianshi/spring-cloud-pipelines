@@ -170,6 +170,8 @@ parsedRepos.each {
 		}
 	}
 
+	/*
+
 	dsl.job("cms/${projectName}-test-env-test") {
 		deliveryPipelineConfiguration('Test', 'Tests on test')
 		wrappers {
@@ -593,6 +595,7 @@ parsedRepos.each {
 		""")
 		}
 	}
+	*/
 }
 
 //  ======= JOBS =======
